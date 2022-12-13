@@ -1,32 +1,46 @@
 import * as React from "react";
-import { BooleanField, ReferenceField, List, Datagrid, TextField, EmailField, NumberField, Pagination, Button, FilterButton, TopToolbar,ExportButton, CreateButton  } from 'react-admin';
-import { PostFilterSidebarRent } from './PostFilterSidebarRent';
+import {
+  BooleanField,
+  List,
+  Datagrid,
+  TextField,
+  NumberField,
+  Pagination,
+  TopToolbar,
+  ExportButton,
+} from "react-admin";
+import { PostFilterSidebarRent } from "./PostFilterSidebarRent";
 
-const PostPagination = () => <Pagination rowsPerPageOptions={[10, 25, 50, 100]} />;
-
-const ListActions = (props) => (
-    <TopToolbar>
-        <ExportButton/>
-
-    </TopToolbar>
+const PostPagination = () => (
+  <Pagination rowsPerPageOptions={[10, 25, 50, 100]} />
 );
 
+const ListActions = (props) => (
+  <TopToolbar>
+    <ExportButton />
+  </TopToolbar>
+);
 
 export const rentsList = () => (
-    <List aside={<PostFilterSidebarRent/>} actions={<ListActions/>} title="List of Rents" pagination={<PostPagination /> }>
-        <Datagrid rowClick="edit">
-             <NumberField source="id" />
-             <TextField source="dateInit" />
-             <TextField source="dateFinish" />
-             <NumberField source="totalPrice" />
-             <TextField source="createdAt" />
-             <NumberField source="userId" />
-             {/* <TextField source="userName" />
+  <List
+    aside={<PostFilterSidebarRent />}
+    actions={<ListActions />}
+    title="List of Rents"
+    pagination={<PostPagination />}
+  >
+    <Datagrid rowClick="edit">
+      <NumberField source="id" />
+      <TextField source="dateInit" />
+      <TextField source="dateFinish" />
+      <NumberField source="totalPrice" />
+      <TextField source="createdAt" />
+      <NumberField source="userId" />
+      {/* <TextField source="userName" />
              <EmailField source="userEmail" /> */}
-             <NumberField source="vehicleId"  />
-             {/* <TextField source="vehicle"/> */}
-             {/* <ReferenceField source="vehicleId" reference="vehicles" /> */}
-             <BooleanField source="active" />
-        </Datagrid>
-    </List>
+      <NumberField source="vehicleId" />
+      {/* <TextField source="vehicle"/> */}
+      {/* <ReferenceField source="vehicleId" reference="vehicles" /> */}
+      <BooleanField source="active" />
+    </Datagrid>
+  </List>
 );

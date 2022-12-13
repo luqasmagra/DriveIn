@@ -63,7 +63,7 @@ const Users = () => {
 
   useEffect(() => {
     fun();
-  }, []);
+  }, [fun]);
 
   const statusChangeHandler = async (event) => {
     const state = event.target.value.split(",");

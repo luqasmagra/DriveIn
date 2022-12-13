@@ -29,7 +29,6 @@ export const GET_COMMENTS_USER = "GET_COMMENTS_USER";
 
 export const REFRESH_USER = "REFRESH_USER";
 
-
 export const deleteStates = () => {
   return {
     type: DELETE_STATES,
@@ -225,7 +224,7 @@ export const getUser = (email) => {
     const response = await axios.get(`/user/info/${email}`);
     localStorage.setItem("UserLogin", JSON.stringify(response.data));
   };
-}
+};
 
 export const loginUser = (payload, navigate) => async (dispatch) => {
   try {
@@ -327,7 +326,7 @@ export const refreshUser = () => {
     type: REFRESH_USER,
     payload: userLogin ? userLogin : null,
   };
-}
+};
 
 export const getPayment = (payload) => {
   return async function (dispatch) {
@@ -397,11 +396,7 @@ export const deleteFavorite = (payload) => async (dispatch) => {
 
 export const userUpdate = (payload, body) => async (dispatch) => {
   try {
-    const user = JSON.parse(localStorage.getItem("UserLogin"));
-    const cualquiera = await axios.put(
-      `/user?id=${payload}`,
-      body
-    );
+    const cualquiera = await axios.put(`/user?id=${payload}`, body);
     console.log("SOY EL USER DE ACTIONS", cualquiera);
     // const edit = await axios.get(`/user/${user}`);
     // console.log("SOY EL edit DE ACTIONS", edit);

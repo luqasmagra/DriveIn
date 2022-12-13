@@ -45,7 +45,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="bg-stone-200 relative  top-[220px]  w-[484px] h-[449px]   border-solid border-2 rounded-3xl  border-stone-200 flex flex-col text-sm font-medium text-white py-3 px-3 justify-center">
+    <div className="bg-stone-200 relative max-md:bg-opacity-80  w-[484px] h-[449px] max-md:w-full    border-solid border-2 rounded-3xl  border-stone-200 flex flex-col text-sm font-medium text-white py-3 px-3 justify-center">
       <div className="text-2xl text-[#009A88] font-bold mb-5">
         <h2>Encontrá el vehículo ideal para alquilar en cada ciudad!</h2>
       </div>
@@ -57,7 +57,7 @@ export default function SearchBar() {
         <select
           onChange={(e) => handleCountry(e)}
           placeholder="País..."
-          className="relative block w-[440px] cursor-default rounded-md border border-[#F97D67]-300 bg-[#F97D67] py-2 pl-3 pr-10 text-left shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:text-sm"
+          className="relative block w-[440px] cursor-default rounded-md border max-lg:w-fit border-[#F97D67]-300 bg-[#F97D67] py-2 pl-3 pr-10 text-left shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:text-sm"
         >
           <option value="City">Pais...</option>
           {countries &&
@@ -72,7 +72,7 @@ export default function SearchBar() {
         <select
           onChange={(e) => handleCity(e)}
           placeholder="Ciudad..."
-          className="relative block w-[440px] cursor-default rounded-md border border-[#F97D67]-300 bg-[#F97D67] py-2 pl-3 pr-10 text-left shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:text-sm my-6"
+          className="relative block w-[440px] cursor-default rounded-md border border-[#F97D67]-300 bg-[#F97D67] py-2 pl-3 pr-10 text-left shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 max-lg:w-fit my-6"
         >
           <option value="City">Ciudad...</option>
           {cities &&

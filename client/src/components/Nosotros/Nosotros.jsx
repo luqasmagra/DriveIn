@@ -64,7 +64,11 @@ export default function Nosotros() {
     return (
       <div className="flex flex-col bg-white p-5 rounded-lg w-[300px] justify-around shadow-xl mt-4 m-auto ">
         <h2 className="font-bold">{nombre}</h2>
-        <img src={image} className="w-40 m-auto mt-2 rounded-full" />
+        <img
+          src={image}
+          className="w-40 m-auto mt-2 rounded-full"
+          alt="developer"
+        />
         <div className="flex mt-2 justify-around">
           <a href={linkedin} target="_blank" className="w-7">
             <img src={linkedinImg} alt="Loading Auto" />
@@ -82,7 +86,7 @@ export default function Nosotros() {
       <div>
         <NavBar />
       </div>
-      <div className="my-8 grid grid-cols-4 ">
+      <div className="my-8 grid grid-cols-4 max-md:flex max-md:flex-col">
         {datos &&
           datos.map((item, index) => {
             return (

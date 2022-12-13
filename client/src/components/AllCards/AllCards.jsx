@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
-import { Link } from "react-router-dom";
 import Siguiente from "../../images/flechablancader.png";
 import Anterior from "../../images/flechablancaizq.png";
 
@@ -47,12 +46,7 @@ export default function AllCards() {
 
   return (
     <>
-      {/* <Link to="/creation">
-        <button className=" align-right flex-row bg-[#009A88] w-max self-center px-4 py-1 rounded-lg hover:bg-[#F97D67] text-white mt-1">
-          Agregar Vehículo
-        </button>
-      </Link> */}
-      <div className=" flex flex-wrap gap-x-16 gap-y-24 mt-10 mb-5 justify-center">
+      <div className=" flex flex-wrap gap-x-16 gap-y-24 mt-10 mb-5 justify-center max-md:mx-0">
         {currentVehicles.length ? (
           currentVehicles.map((v, index) => (
             <div key={index}>
@@ -102,7 +96,7 @@ export default function AllCards() {
           ))}
           {currentPage !== pageNumbers.length ? (
             <button
-              className="bg-[#009A88] hover:bg-[#72aca5] p-3 h-10 w-10 rounded-full text-center justify-center "
+              className="bg-[#009A88] hover:bg-[#72aca5] p-3 h-10 w-10 rounded-full items-center justify-center "
               onClick={nextHandler}
             >
               <img src={Siguiente} alt="siguiente" />

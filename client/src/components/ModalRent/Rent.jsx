@@ -30,9 +30,9 @@ const Rent = ({
   };
 
   return (
-    <div className="w-8/12 h-[60px] flex flex-row justify-around items-center border-4 border-[#e0dfdf]">
+    <div className="w-8/12 h-[60px] flex flex-row justify-around items-center border-4 border-[#e0dfdf] max-md:flex-col max-md:m-auto max-md:h-fit">
       <div className="w-[80px]">
-        <img src={img} alt="photo" className="w-full" />
+        <img src={img} alt="rent" className="w-full" />
       </div>
       <div className="w-[100px] text-gray-900">
         <span className="text-gray-900 font-semibold text-sm">

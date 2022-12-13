@@ -39,7 +39,7 @@ export default function Perfil() {
   useEffect(() => {
     dispatch(getCommentsUser(usuario.id));
     dispatch(getRents(usuario.id));
-  }, [dispatch]);
+  }, [dispatch, usuario.id]);
 
   const imageCloudChangeHandler = (event) => {
     const imageData = new FormData();
@@ -55,15 +55,6 @@ export default function Perfil() {
         setImageCloud(response.data.secure_url);
       });
   };
-
-  async function handlePhotoChange(e) {
-    e.preventDefault();
-    const url = await imageCloudChangeHandler(e);
-    setInput({
-      ...input,
-      [e.target.name]: url,
-    });
-  }
 
   async function handleUserPhoto(e) {
     e.preventDefault();
@@ -139,7 +130,7 @@ export default function Perfil() {
             </div>
           </div>
 
-          <div className="w-full md:w-9/12 mx-2 h-64">
+          <div className="w-full md:w-9/12 mx-2 h-64 max-md:m-auto max-md:mt-2">
             <div className="  p-3 shadow-sm rounded-sm bg-[#f5f4f4]">
               <div className="bg-[#2E3A46] text-white rounded py-2">
                 <div className="flex justify-center space-x-2 font-semibold text-gray-900 leading-8 ">
@@ -224,64 +215,68 @@ export default function Perfil() {
               <div className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
                 Mas Información
               </div>
-              {usuario.role === 1 ? <div className="bg-white p-3 shadow-sm rounded-sm">
-                <div className="grid">
-                  <div>
-                    <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
-                      <span clas="text-green-500">
-                        <svg
-                          className="h-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                      </span>
-                      <span className="tracking-wide">Alquilados</span>
-                    </div>
-                    <ul className="list-inside space-y-2">
-                      {rents.length ? (
-                        rents.map((e) => {
-                          return (
-                            <Rent
-                              img={e.vehicle.photo}
-                              brand={e.vehicle.brand}
-                              model={e.vehicle.model}
-                              fi={e.dateInit}
-                              ff={e.dateFinish}
-                              tp={e.totalPrice}
-                              city={e.vehicle.city.name}
-                              country={e.vehicle.city.country}
-                              id={usuario.id}
-                              vehicleId={e.vehicle.id}
+              {usuario.role === 1 ? (
+                <div className="bg-white p-3 shadow-sm rounded-sm">
+                  <div className="grid">
+                    <div>
+                      <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                        <span clas="text-green-500">
+                          <svg
+                            className="h-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                             />
-                          );
-                        })
-                      ) : (
-                        <div className="text-gray-500 text-xs flex items-start">
-                          {" "}
-                          No hay autos alquilados
-                        </div>
-                      )}
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"></div>
-                    <ul className="list-inside space-y-2"></ul>
+                          </svg>
+                        </span>
+                        <span className="tracking-wide">Alquilados</span>
+                      </div>
+                      <ul className="list-inside space-y-2">
+                        {rents.length ? (
+                          rents.map((e) => {
+                            return (
+                              <Rent
+                                img={e.vehicle.photo}
+                                brand={e.vehicle.brand}
+                                model={e.vehicle.model}
+                                fi={e.dateInit}
+                                ff={e.dateFinish}
+                                tp={e.totalPrice}
+                                city={e.vehicle.city.name}
+                                country={e.vehicle.city.country}
+                                id={usuario.id}
+                                vehicleId={e.vehicle.id}
+                              />
+                            );
+                          })
+                        ) : (
+                          <div className="text-gray-500 text-xs flex items-start">
+                            {" "}
+                            No hay autos alquilados
+                          </div>
+                        )}
+                      </ul>
+                    </div>
+                    <div>
+                      <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3"></div>
+                      <ul className="list-inside space-y-2"></ul>
+                    </div>
                   </div>
                 </div>
-              </div>: <NavLink to="/admin">
+              ) : (
+                <NavLink to="/admin">
                   <button className="mx-auto shadow bg-[#009A88] hover:bg-[#41D3C0] focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">
                     Ir a panel de Administración
                   </button>
-                </NavLink>}
+                </NavLink>
+              )}
             </div>
           </div>
         </div>

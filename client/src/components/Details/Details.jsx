@@ -42,7 +42,6 @@ export default function Details() {
     comments.map((v) => {
       promedioTotal = promedioTotal + v.promedio;
     });
-  console.log(Math.round(promedioTotal / comments.length));
   const handleOpen = (e) => {
     e.preventDefault();
     if (!user) {
@@ -67,7 +66,7 @@ export default function Details() {
         <NavBar />
       </div>
       {vehicleDetailsState && (
-        <div className=" h-full w-[990px] py-10 px-10 m-auto bg-white">
+        <div className=" h-full w-[990px] py-10 px-10 m-auto bg-white max-md:w-screen max-md:mt-2">
           <button onClick={handleBack} className="flex flex-row m-4 ml-6">
             <img src={atras} alt="flecha" className="w-6 h-6 mr-2" />
             <span className="text-[#2E3A46] font-semibold hover:text-[#41D3C0]">
@@ -75,7 +74,7 @@ export default function Details() {
             </span>
           </button>
           <div>
-            <div className="flex flex-row justify-between m-auto">
+            <div className="flex flex-row justify-between m-auto max-md:block">
               <div className="mb-4 ">
                 <img
                   className="rounded-md object-cover h-40 w-80 border-[#41D3C0] border-2 m-auto"
@@ -102,7 +101,7 @@ export default function Details() {
                 )}
               </div>
 
-              <div className="">
+              <div>
                 <div className="bg-slate-100 p-6 rounded-md mb-4 w-[200px] h-[60px] m-auto flex flex-col justify-center">
                   <span className="text-slate-400 text-md">Modelo</span>
                   <h2 className="text-[#F97D67] text-xl font-semibold">
@@ -117,7 +116,7 @@ export default function Details() {
                     {vehicleDetailsState.category}
                   </h2>
                 </div>
-                <div className="flex justify-between items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 w-[200px] h-[60px]">
+                <div className="flex justify-around items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 w-[200px] h-[60px] m-auto">
                   <div>
                     <img
                       src={Asientos}
@@ -134,7 +133,7 @@ export default function Details() {
                 </div>
               </div>
               <div>
-                <div className="flex justify-between items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 h-[60px]">
+                <div className="flex justify-between items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 m-auto w-[200px] h-[75px]">
                   <div>
                     <img
                       src={Aire}
@@ -153,7 +152,7 @@ export default function Details() {
                     </div>
                   )}
                 </div>
-                <div className="flex justify-between items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 h-[60px]">
+                <div className="flex justify-between items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 m-auto w-[200px] h-[75px]">
                   <div>
                     <img
                       src={Transmision}
@@ -168,7 +167,7 @@ export default function Details() {
                     </h1>
                   </div>
                 </div>
-                <div className="flex justify-between items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 h-[60px]">
+                <div className="flex justify-between items-center bg-slate-100 p-6 rounded-md mb-4 gap-x-2 m-auto w-[200px] h-[75px]">
                   <div>
                     <img
                       src={Dinero}
@@ -186,8 +185,8 @@ export default function Details() {
               </div>
             </div>
             <div className="flex flex-row border-2 mb-4 w-full border-slate-300">
-              <div className="flex flex-col w-1/2 m-auto p-2 mt-4 mb-4 flex-start border-r-2 border-r-slate-300">
-                <span className="text-lg font-bold flex text-start ml-2 text-[#2E3A46]">
+              <div className="flex flex-col w-1/2 m-auto p-2 mt-4 mb-4 flex-start border-r-2 border-r-slate-300 ">
+                <span className="text-lg font-bold flex flex-start ml-2 text-[#2E3A46] max-md:m-auto">
                   Todos los seguros necesarios para circular
                 </span>
                 <div className="flex flex-row m-[6px]">
@@ -209,30 +208,42 @@ export default function Details() {
                   </span>
                 </div>
               </div>
-              <div className="w-1/2 p-2 mt-2">
-                <div className="flex flex-row h-8">
-                  <span className="flex flex-start mx-[20px] my-2 font-bold text-lg text-[#2E3A46]">
+              <div className="w-1/2 p-2 mt-2 max-md:flex max-md:flex-col ">
+                <div className="flex flex-row h-8 max-md:mb-6">
+                  <span className="flex flex-start mx-[20px] my-2 font-bold text-lg text-[#2E3A46] ">
                     Adicionales a elección
                   </span>
                 </div>
-                <div className="flex flex-row m-4 mt-2">
-                  <img src={signo} alt="sig" className="w-6 h-6" />
+                <div className="flex flex-row m-4 mt-2 max-lg:flex-col">
+                  <img
+                    src={signo}
+                    alt="sig"
+                    className="w-6 h-6 max-lg:m-auto"
+                  />
                   <span className="ml-2 text-[#2E3A46]">Butaca para bebés</span>
-                  <span className="ml-4 text-[#2E3A46] font-bold">
+                  <span className="ml-4 text-[#2E3A46] font-bold max-lg:ml-0">
                     10 USD / DIA
                   </span>
                 </div>
-                <div className="flex flex-row m-4">
-                  <img src={signo} alt="sig" className="w-6 h-6" />
+                <div className="flex flex-row m-4 max-lg:flex-col">
+                  <img
+                    src={signo}
+                    alt="sig"
+                    className="w-6 h-6 max-lg:m-auto"
+                  />
                   <span className="ml-2 text-[#2E3A46]">Butaca para niño</span>
-                  <span className="ml-[30px] text-[#2E3A46] font-bold">
+                  <span className="ml-[30px] text-[#2E3A46] font-bold max-lg:ml-0">
                     10 USD / DIA
                   </span>
                 </div>
-                <div className="flex flex-row m-4">
-                  <img src={signo} alt="sig" className="w-6 h-6" />
+                <div className="flex flex-row m-4 max-lg:flex-col">
+                  <img
+                    src={signo}
+                    alt="sig"
+                    className="w-6 h-6 max-lg:m-auto"
+                  />
                   <span className="ml-2 text-[#2E3A46]">Portaequipajes</span>
-                  <span className="ml-[45px] text-[#2E3A46] font-bold">
+                  <span className="ml-[45px] text-[#2E3A46] font-bold max-lg:ml-0">
                     20 USD / DIA
                   </span>
                 </div>
@@ -269,7 +280,7 @@ export default function Details() {
           <PaymentForm onClose={handleOnClose} visible={open} />
         </div>
       )}
-      <div className="mt-5 w-[990px] m-auto ring-1 ring-[#41D3C0]">
+      <div className="mt-5 w-[990px] m-auto ring-1 ring-[#41D3C0] max-md:w-screen">
         {reviews.length ? (
           reviews.map((r) => {
             return (

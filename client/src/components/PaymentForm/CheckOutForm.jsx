@@ -5,29 +5,30 @@ import swal from "sweetalert";
 import image from "../../images/stripe.png";
 import { getPayment } from "../../redux/actions/actions";
 import cancel from "../../images/cancelacion.PNG";
-import DatePicker from 'react-datepicker'
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function CheckOutForm() {
   const vehiclesDetail = useSelector((state) => state.details);
-  const fechasNoDisponibles = vehiclesDetail.rents && vehiclesDetail.rents.map(r => {
-    let inicio = r.dateInit.split("-");
-    let mm = inicio[1] - 1;
-    let fin = r.dateFinish.split("-");
-    let mm2 = fin[1] - 1;
-    let start = new Date(inicio[0], mm, inicio[2]);
-    let end = new Date(fin[0], mm2, fin[2]);
-    let obj = {
-      start,
-      end
-    }
-    return obj
-  })
+  const fechasNoDisponibles =
+    vehiclesDetail.rents &&
+    vehiclesDetail.rents.map((r) => {
+      let inicio = r.dateInit.split("-");
+      let mm = inicio[1] - 1;
+      let fin = r.dateFinish.split("-");
+      let mm2 = fin[1] - 1;
+      let start = new Date(inicio[0], mm, inicio[2]);
+      let end = new Date(fin[0], mm2, fin[2]);
+      let obj = {
+        start,
+        end,
+      };
+      return obj;
+    });
 
-  useEffect(()=>{
+  useEffect(() => {
     disableDates();
-  }, [])
-
+  }, []);
 
   const dispatch = useDispatch();
   const [dateRange, setDateRange] = useState([null, null]);
@@ -51,14 +52,14 @@ export default function CheckOutForm() {
     yyyy = today.getFullYear();
     setDateRange([new Date(yyyy, mm, dd), null]);
   };
-  
-  const subDays = (date, day) =>{
+
+  const subDays = (date, day) => {
     let dd = date.getDate() + day;
     let mm = date.getMonth();
     let yyyy = date.getFullYear();
     let datoFinal = new Date(yyyy, mm, dd);
     return datoFinal;
-  }
+  };
 
   const diffDays = (from, to) => {
     if (!from || !to) {
@@ -122,7 +123,7 @@ export default function CheckOutForm() {
         dateInit: dateRange[0],
         dateFinish: dateRange[1],
       };
-      const response = dispatch(getPayment(payload));
+      dispatch(getPayment(payload));
       swal({
         title: "Procesando pago",
         text: "Aguarde unos segundos, por favor",
@@ -133,10 +134,9 @@ export default function CheckOutForm() {
     }
   };
 
-
   return (
     <>
-      <div>
+      <div className="">
         <div className="m-auto bg-white mt-[10px] flex flex-row justify-around mb-4 p-2">
           <div className="w-[50px] h-[50px] m-auto">
             <img src={cancel} alt="img-cancelacion" className="w-full h-full" />
@@ -185,7 +185,9 @@ export default function CheckOutForm() {
                   onChange={handleExtraChange}
                 />
                 <span className="mx-2">Butaca para bebe</span>
-                <span className="text-xs text-red-600 mx-[30px] my-[5px]">10 USD / DIA</span>
+                <span className="text-xs text-red-600 mx-[30px] my-[5px]">
+                  10 USD / DIA
+                </span>
               </label>
             </div>
           </div>
@@ -200,7 +202,9 @@ export default function CheckOutForm() {
                   onChange={handleExtraChange}
                 />
                 <span className="mx-2">Butaca para niño</span>
-                <span className="text-xs text-red-600 mx-[35px] my-[5px]">10 USD / DIA</span>
+                <span className="text-xs text-red-600 mx-[35px] my-[5px]">
+                  10 USD / DIA
+                </span>
               </label>
             </div>
           </div>
@@ -215,7 +219,9 @@ export default function CheckOutForm() {
                   onChange={handleExtraChange}
                 />
                 <span className="mx-2">Portaequipaje</span>
-                <span className="text-xs text-red-600 mx-[58px] my-[5px]">20 USD / DIA</span>
+                <span className="text-xs text-red-600 mx-[58px] my-[5px]">
+                  20 USD / DIA
+                </span>
               </label>
             </div>
           </div>
@@ -234,7 +240,7 @@ export default function CheckOutForm() {
               excludeDateIntervals={fechasNoDisponibles}
               onChange={(update) => {
                 setDateRange(update);
-               }}
+              }}
               isClearable={true}
               className="flex h-10 bg-[#2E3A46] text-white  rounded-xl py-2 pl-3 pr-3 text-left shadow-sm focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 sm:text-sm m-auto cursor:pointer"
             />

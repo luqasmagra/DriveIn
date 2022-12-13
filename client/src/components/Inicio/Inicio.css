@@ -2,7 +2,6 @@
   background-image: url("../../images/landing.png");
   margin: 0;
   padding: 0;
-
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -38,48 +37,9 @@
   background: #41d3c0;
   box-shadow: 0 0 4px #41d3c0, 0 0 20px #41d3c0, 0 0 40px #41d3c0;
 }
-
-.titulo {
-  display: flex;
-  position: relative;
-  margin-top: 280px;
-  margin-left: 10%;
-  font-size: 40px;
-  font-weight: 900;
-  color: #ffffff;
-  width: 470px;
-  justify-content: start;
-  text-align: left;
-}
 .logo {
   width: 250px;
   position: absolute;
   padding: 1rem;
   margin-left: 3%;
-}
-
-hr {
-  height: 10px;
-  margin-left: 10%;
-  width: 270px;
-  background-color: rgb(255, 255, 255);
-  position: absolute;
-  top: 40%;
-}
-.redes {
-  display: flex;
-  position: relative;
-  width: 20px;
-  height: 10px;
-  justify-content: space-between;
-  width: 42px;
-  margin-left: 10%;
-  top: 50px;
-  float: left;
-}
-
-.redes img {
-  padding: 5px;
-  margin-top: 12rem;
-  justify-content: space-between;
 }

@@ -15,7 +15,7 @@ export const User = ({ img, name }) => {
 
   useEffect(() => {
     dispatch(refreshAuthUser());
-  }, [isLoading]);
+  }, [isLoading, dispatch]);
 
   const handlerExitSession = (e) => {
     if (isAuthenticated) {
@@ -32,14 +32,14 @@ export const User = ({ img, name }) => {
   };
 
   return (
-    <nav className="w-[200px] h-[50px] bg-[#2E3A46] rounded-xl header">
-      <div className="w-full flex flex-row justify-around ">
-        <figure className="w-[40px] h-[40px] ml-4 mt-[4px] m-auto">
+    <nav className="w-[200px] h-[50px] bg-[#2E3A46] rounded-xl header max-lg:max-w-fit max-lg:m-auto ">
+      <div className="w-full flex flex-row justify-around max-lg:px-2 ">
+        <figure className="w-[40px] h-[40px] ml-4 mt-[4px] m-auto max-lg:m-1 ">
           <img src={img} alt="user" className=" w-full h-full rounded-full" />
         </figure>
         <span className="text-white font-bold align-center m-auto">{name}</span>
       </div>
-      <ul className="z-999 -mt-[2px] ml-16 hidden absolute r-0 w-[130px] bg-slate-900 list rounded">
+      <ul className="-mt-[2px] ml-16 hidden duration-500 absolute w-[130px] bg-[#2E3A46] list rounded max-lg:ml-0 max-lg:-mt-[2px] ">
         <li>
           <Link to="/user">
             <button className="w-full text-white border-none rounded hover:bg-[#34d399]">

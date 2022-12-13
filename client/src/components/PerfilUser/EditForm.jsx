@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { getRents, getUser, userUpdate } from "../../redux/actions/actions";
 import swal from "sweetalert";
 
 export default function EditForm({ name, lastName, phone, open, onClose }) {
   const usuario = JSON.parse(localStorage.getItem("UserLogin"));
-  const [ImageCloud, setImageCloud] = useState("");
   const [input, setInput] = useState({
     name: usuario.name,
     lastName: usuario.lastName,
@@ -14,15 +13,13 @@ export default function EditForm({ name, lastName, phone, open, onClose }) {
     password: usuario.password,
     photo: usuario.photo,
   });
-
-  const rents = useSelector((state) => state.rents);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getRents(usuario.id));
-    dispatch(getUser(usuario.email))
-  }, [dispatch]);
+    dispatch(getUser(usuario.email));
+  }, [dispatch, usuario.id, usuario.email]);
 
   function handleInputChange(e) {
     setInput({
@@ -46,18 +43,12 @@ export default function EditForm({ name, lastName, phone, open, onClose }) {
     navigate("/home");
   }
 
-  async function handleUserPhoto(e) {
-    e.preventDefault();
-    dispatch(userUpdate(usuario.id, input));
-    alert("Foto cambiada con éxito");
-  }
-
   if (!open) return null;
 
   return (
     <>
       {open && (
-        <div className="z-30 bg-[#2E3A46] bg-opacity-30 w-full  absolute p-0 m-0">
+        <div className="z-30 bg-[#2E3A46] bg-opacity-30 w-full min-h-full  absolute p-0 m-0">
           <button
             type="button"
             onClick={onClose}
@@ -79,7 +70,7 @@ export default function EditForm({ name, lastName, phone, open, onClose }) {
                   </h1>
                 </div>
                 <label
-                  for="name"
+                  htmlFor="name"
                   className="text-[#009A88] text-sm font-normal leading-tight tracking-normal"
                 >
                   Nombre

@@ -22,16 +22,13 @@ export default function Home() {
       <div>
         <Navbar />
       </div>
-      <br />
-      <br />
-      <br />
-      <div className="relative">
+      <div className="relative max-md:mt-10">
         <img
           src={banner}
           alt="driveIn banner"
-          className="w-[1500.22px] h-[636px] m-auto rounded-3xl"
+          className="w-[1500.22px] h-[636px] m-auto rounded-3xl max-md:absolute max-md:h-[470px]"
         />
-        <div className="absolute bottom-2/4 left-16">
+        <div className="absolute left-16 top-16 max-md:relative max-md:left-0 max-md:top-2 ">
           <SearchBar />
         </div>
       </div>

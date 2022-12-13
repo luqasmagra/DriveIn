@@ -24,34 +24,22 @@ export default function Navbar() {
       };
       dispatch(loginUserAuth(nuevo));
     }
-  }, [status, isAuthenticated]);
+  }, [status, isAuthenticated, dispatch]);
 
   const userLogin = JSON.parse(localStorage.getItem("UserLogin"));
   let location = useLocation();
   return (
     <div>
       <div className="bg-blue-500">
-        <nav className="relative px-4 py-4 flex justify-between items-center bg-white shadow-lg rounded-bl-2xl">
-          <div className="text-3xl font-bold leading-none" href="#">
+        <nav className="px-4 py-4 flex justify-between items-center bg-white shadow-lg rounded-bl-2xl rounded-br-2xl max-lg:block">
+          <div className="max-lg:max-w-fit max-lg:m-auto">
             <NavLink to="/">
-              <img src={DriveIn} alt="" className="h-12 mr-1 " />
+              <img src={DriveIn} alt="" className="h-12 mr-1  " />
             </NavLink>
           </div>
-          <div className="lg:hidden">
-            <button className="navbar-burger flex items-center text-blue-600 p-3">
-              <svg
-                className="block h-4 w-4 fill-current"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Mobile menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-              </svg>
-            </button>
-          </div>
-          <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-            <li>
-              <div className="text-sm text-[#2e3a46] hover:text-[#f97d67] font-bold font-sans cursor-pointer">
+          <ul className="flex max-lg:flex max-lg:items-center max-lg:justify-center max-lg:my-6">
+            <li className="mx-4 md:my-0">
+              <div className="text-sm text-[#2e3a46] hover:text-[#f97d67] font-bold font-sans cursor-pointer duration-500">
                 <NavLink
                   to="/home"
                   style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -76,7 +64,7 @@ export default function Navbar() {
                 />
               </svg>
             </li>
-            <li>
+            <li className="mx-4 md:my-0">
               <div className="text-sm text-[#2e3a46] hover:text-[#f97d67] font-bold font-sans cursor-pointer">
                 <NavLink
                   to="/nosotros"
@@ -103,7 +91,7 @@ export default function Navbar() {
                 />
               </svg>
             </li>
-            <li>
+            <li className="mx-4 md:my-0">
               <div className="text-sm text-[#2e3a46] hover:text-[#f97d67] font-bold font-sans cursor-pointer">
                 <NavLink
                   to="/contacto"
@@ -131,11 +119,8 @@ export default function Navbar() {
                     />
                   </svg>
                 </li>
-                <li>
-                  <div
-                    className="text-sm text-[#2e3a46] hover:text-[#f97d67] font-bold font-sans cursor-pointer"
-                    href="#"
-                  >
+                <li className="mx-4 md:my-0">
+                  <div className="text-sm text-[#2e3a46] hover:text-[#f97d67] font-bold font-sans cursor-pointer">
                     <NavLink
                       to="/favorite"
                       style={({ isActive }) =>
@@ -151,17 +136,15 @@ export default function Navbar() {
           </ul>
           <div>
             {userLogin ? (
-              <User img={userLogin.photo} name={userLogin.name} />
+              <User img={userLogin.photo} name={userLogin.name} className="" />
             ) : (
               location.pathname !== "/login" &&
               location.pathname !== "/register" && (
-                <div>
-                  <Link to="/login">
-                    <div className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-300 hover:bg-gray-100 text-sm text-[#2e3a46] font-bold font-sans  rounded-xl transition duration-200 hover:bg-[#f97d67] hover:ring-[#f97d67] cursor-pointer">
-                      <NavLink to="/login">Iniciar Sesión</NavLink>
-                    </div>
-                  </Link>
-                  <div className="hidden lg:inline-block py-2 px-6 bg-[#009A88] hover:bg-[#34d399] hover:ring-[#34d399] text-sm text-white font-bold font-sans rounded-xl transition duration-200 cursor-pointer">
+                <div className="flex max-lg:justify-center">
+                  <div className=" py-2 px-6 bg-gray-300 hover:bg-gray-100 text-sm text-[#2e3a46] font-bold font-sans  rounded-xl transition duration-200 hover:bg-[#f97d67] hover:ring-[#f97d67] cursor-pointer ">
+                    <NavLink to="/login">Iniciar Sesión</NavLink>
+                  </div>
+                  <div className=" py-2 px-6 bg-[#009A88] hover:bg-[#34d399] hover:ring-[#34d399] text-sm text-white font-bold font-sans rounded-xl transition duration-200 cursor-pointer">
                     <NavLink to="/register">Registrarse</NavLink>
                   </div>
                 </div>
